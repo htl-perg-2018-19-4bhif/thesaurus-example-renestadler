@@ -1,6 +1,5 @@
 //Error when to few arguments available
 if (process.argv.length <= 2) {
-    console.log(process.argv.length)
     console.error("Please specify words");
 } else if (process.argv.length === 3 && process.argv[2] === "-i") { //Interactive Program
     let matched: boolean;
@@ -13,6 +12,9 @@ if (process.argv.length <= 2) {
     });
     console.log("Please enter a word to search for:");
     stdin.on('line', function (input) {
+        if(input==="\\q"){
+            process.exit(0);
+        }
         matched = false;
         //Init the File Reader
         var lineReader = require('readline').createInterface({
